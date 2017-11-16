@@ -8,5 +8,50 @@
     <artifactId>aphrodite-app</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.set</groupId>
+            <artifactId>jboss-aphrodite-common</artifactId>
+            <version>0.7.3-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.set</groupId>
+            <artifactId>jboss-aphrodite-jira</artifactId>
+            <version>0.7.3-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.set</groupId>
+            <artifactId>jboss-aphrodite-github</artifactId>
+            <version>0.7.3-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>org.jboss.AproditeMain</mainClass>
+                    <systemProperties>
+                        <systemProperty>
+                            <key>aphrodite.config</key>
+                            <value>aphrodite.properties</value>
+                        </systemProperty>
+                        ...
+                    </systemProperties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>
